@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "565085690665",
+    "project_id": "togetherdelivery-52ca5",
+    "storage_bucket": "togetherdelivery-52ca5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565085690665:android:c3e6a68dc085bc2b19b538",
+        "android_client_info": {
+          "package_name": "com.example.togetherdelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565085690665-j58rdm2oemop1ilnhc5chq7po4q7n68b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgirCmptTGVmHS7RDXook6vnhOAU1lMPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565085690665-j58rdm2oemop1ilnhc5chq7po4q7n68b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
