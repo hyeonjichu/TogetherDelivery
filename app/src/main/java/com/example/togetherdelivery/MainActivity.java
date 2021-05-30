@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String TAG = "Hello";
+    private final String TAG = "Hello";
     Button togetherBtn, aloneBtn;
     String userId;
 
@@ -28,30 +28,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        togetherBtn = (Button)findViewById(R.id.togetherBtn);
-        aloneBtn = (Button)findViewById(R.id.aloneBtn);
+        togetherBtn = findViewById(R.id.togetherBtn);
+        aloneBtn = findViewById(R.id.aloneBtn);
 
         Intent MainIntent = getIntent();
         userId = MainIntent.getStringExtra("userId");
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        togetherBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent togetherIntent = new Intent(MainActivity.this, TogetherActivity.class);
-                togetherIntent.putExtra("userId",userId);
-                startActivity(togetherIntent);
-            }
+        togetherBtn.setOnClickListener(v -> {
+            Intent storeIntent = new Intent(MainActivity.this, StoreListActivity.class);
+            storeIntent.putExtra("userId",userId);
+            storeIntent.putExtra("delivery","together");
+            startActivity(storeIntent);
         });
 
-        aloneBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent aloneIntent = new Intent(MainActivity.this, AloneActivity.class);
-                aloneIntent.putExtra("userId",userId);
-                startActivity(aloneIntent);
-            }
+        aloneBtn.setOnClickListener(v -> {
+            Intent storeIntent = new Intent(MainActivity.this, StoreListActivity.class);
+            storeIntent.putExtra("userId",userId);
+            storeIntent.putExtra("delivery","alone");
+            startActivity(storeIntent);
         });
 
     }

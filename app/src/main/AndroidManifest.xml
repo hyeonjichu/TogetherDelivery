@@ -17,9 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".JoinActivity"></activity>
-        <activity android:name=".TogetherActivity"></activity>
-        <activity android:name=".AloneActivity"></activity>
-        <activity android:name=".AloneListActivity"></activity>
+        <activity android:name=".StoreListActivity"></activity>
+        <activity android:name=".MenuListActivity"></activity>
     </application>
 
 </manifest>
