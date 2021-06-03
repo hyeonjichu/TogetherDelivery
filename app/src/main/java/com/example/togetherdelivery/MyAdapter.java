@@ -11,29 +11,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.annotations.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
+
     Context context;
     ArrayList<ProductsModel> productsModelArrayList;
-    Button storeBtn;
+
+
 
     public MyAdapter(Context context, ArrayList<ProductsModel> productsModelArrayList) {
         this.context = context;
         this.productsModelArrayList = productsModelArrayList;
     }
 
-    public interface OnItemClickListener{
-        void onItemClick(View v, int position);
+    public interface OnItemClickListener {
+        void onItemClick(View v, int pos);
     }
 
     private OnItemClickListener mListener = null;
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
+
         this.mListener = listener;
     }
+
+
 
     @NonNull
     @NotNull
@@ -51,7 +56,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
         ProductsModel productsModel = productsModelArrayList.get(position);
 
         holder.storeName.setText(productsModel.storeName);
-        holder.storeAdd.setText(productsModel.storeAdd);
+        holder.storeAddr.setText(productsModel.storeAddr);
+        //holder.storeId.setText(productsModel.storeId);
 
     }
 
@@ -62,19 +68,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
 
     public class ListviewHoler extends RecyclerView.ViewHolder{
 
-        TextView storeName, storeAdd;
-        Button storeBtn;
+        TextView storeName, storeAddr, storeId;
+
+
 
         public ListviewHoler(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);
             storeName = itemView.findViewById(R.id.list_storeName);
-            storeAdd = itemView.findViewById(R.id.list_storeAdd);
+            storeAddr = itemView.findViewById(R.id.list_storeAdd);
+            //storeId = itemView.findViewById(R.id.textView2);
+
+            //itemView.setClickable(true);
             itemView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
-                    int pos = getAdapterPosition() ;
-                    if (pos != RecyclerView.NO_POSITION) {
-                        if (mListener != null) {
+                    int pos = getBindingAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        if(mListener != null);
+                        {
                             mListener.onItemClick(v, pos);
                         }
                     }
@@ -82,4 +94,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
             });
         }
     }
+
 }

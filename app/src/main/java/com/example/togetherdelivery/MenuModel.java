@@ -1,14 +1,31 @@
 package com.example.togetherdelivery;
 
-public class MenuModel {
-    String menuName, menuPrice;
+import java.io.Serializable;
 
-    private MenuModel() {}
+public class MenuModel implements Serializable {
+    String menuInfo;
+    String menuName;
+    String menuPrice;
 
-    private MenuModel(String menuName, String menuPrice) {
+    private boolean isSelected;
+    public MenuModel(){}
+
+
+    public MenuModel(String menuInfo, String menuName, String menuPrice, boolean isSelected) {
+        this.menuInfo = menuInfo;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
+        this.isSelected = isSelected;
     }
+
+    public String getMenuInfo() {
+        return menuInfo;
+    }
+
+   public void setMenuInfo(String menuInfo) {
+        this.menuInfo = menuInfo;
+    }
+
     public String getMenuName() {
         return menuName;
     }
@@ -24,4 +41,8 @@ public class MenuModel {
     public void setMenuPrice(String menuPrice) {
         this.menuPrice = menuPrice;
     }
+
+    public boolean isSelected() {return isSelected;}
+
+    public void setSelected(boolean isSelected) {this.isSelected = isSelected;}
 }

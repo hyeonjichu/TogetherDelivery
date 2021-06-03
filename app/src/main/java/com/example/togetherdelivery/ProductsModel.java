@@ -1,14 +1,21 @@
 package com.example.togetherdelivery;
 
-public class ProductsModel {
+import java.io.Serializable;
+
+public class ProductsModel implements Serializable {
     String storeName;
-    String storeAdd;
+    String storeAddr;
+    String storeId;
+
+
 
     private ProductsModel() {}
 
-    private ProductsModel(String storeName, String storeAdd) {
+    private ProductsModel(String storeName, String storeAddr, String storeId) {
         this.storeName = storeName;
-        this.storeAdd = storeAdd;
+        this.storeAddr = storeAddr;
+        this.storeId = storeId;
+
     }
 
     public String getStoreName() {
@@ -19,11 +26,17 @@ public class ProductsModel {
         this.storeName = storeName;
     }
 
-    public String getStoreAdd() {
-        return storeAdd;
+    public String getStoreAddr() {
+        return storeAddr;
     }
 
-    public void setStoreAdd(String storeAddr) {
-        this.storeAdd = storeAddr;
+    public void setStoreAddr(String storeAddr) { this.storeAddr = storeAddr; }
+
+    public String getStoreId() {
+        return storeId;
     }
+
+    public void setStoreId(String storeId) { this.storeId = storeId; }
+
+
 }

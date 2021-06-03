@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.togetherdelivery">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="배달투게더"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TogetherDelivery">
@@ -17,8 +19,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".JoinActivity"></activity>
-        <activity android:name=".StoreListActivity"></activity>
-        <activity android:name=".MenuListActivity"></activity>
+        <activity android:name=".TogetherActivity"></activity>
+        <activity android:name=".AloneActivity"></activity>
+        <activity android:name=".AloneMenuListActivity"></activity>
+        <activity android:name=".AloneShopBagActivity"></activity>
+        <activity android:name=".PurchaseWaitingActivity"></activity>
+        <activity android:name=".TogetherShopBagActivity"></activity>
+        <activity android:name=".TogetherListActivity"></activity>
+        <activity android:name=".TogetherMenuListActivity"></activity>
+        <activity android:name=".PurchaseActivity"></activity>
     </application>
 
 </manifest>

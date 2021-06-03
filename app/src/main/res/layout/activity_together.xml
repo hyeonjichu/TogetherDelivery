@@ -2,22 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/storeList"
+        android:id="@+id/store_together_list"
         android:layout_width="match_parent"
-        android:layout_height="556dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
     <Button
-        android:id="@+id/storeListBtn"
+        android:id="@+id/store_together_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="같이 리스트 보기" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="같이 배달진행중인 목록 보기" />
 </LinearLayout>

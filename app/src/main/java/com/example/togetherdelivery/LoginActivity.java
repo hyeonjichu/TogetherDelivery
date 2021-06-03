@@ -1,13 +1,10 @@
 package com.example.togetherdelivery;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -18,8 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,6 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getSupportActionBar().setIcon(R.drawable.delivery);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         login_id = (EditText)findViewById(R.id.loginId);
         login_pw = (EditText)findViewById(R.id.loginPw);
@@ -49,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         if(id.equals(document.get("id").toString()) && pw.equals(document.get("pw").toString())){
-                            intent.putExtra("userId",id);
+                            intent.putExtra("id",document.get("id").toString());
                             startActivity(intent);
                         }else{
                             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

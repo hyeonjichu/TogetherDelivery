@@ -8,6 +8,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="112dp"
+        android:layout_height="93dp"
+        app:srcCompat="@drawable/alone" />
+
     <Button
         android:id="@+id/aloneBtn"
         android:layout_width="match_parent"
@@ -19,5 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="같이 배달" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="112dp"
+        android:layout_height="93dp"
+        app:srcCompat="@drawable/together" />
 
 </LinearLayout>
