@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Intent MainIntent = getIntent();
         userId = MainIntent.getStringExtra("id");
 
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         togetherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -31,7 +31,7 @@ public class MyMenuAdapter extends RecyclerView.Adapter<MyMenuAdapter.ListviewHo
     @Override
 
     public MyMenuAdapter.ListviewHoler onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.list_store_menu, parent, false);
+            View v = LayoutInflater.from(context).inflate(R.layout.list_store_menu, parent, false);
 
         return new ListviewHoler(v);
     }
@@ -76,8 +76,8 @@ public class MyMenuAdapter extends RecyclerView.Adapter<MyMenuAdapter.ListviewHo
 
         public ListviewHoler(@NonNull @NotNull View itemView) {
             super(itemView);
-            menuName = itemView.findViewById(R.id.list_shop_menuName);
-            menuPrice = itemView.findViewById(R.id.list_shop_menuPrice);
+            menuName = itemView.findViewById(R.id.list_menuName);
+            menuPrice = itemView.findViewById(R.id.list_menuPrice);
             menuInfo = itemView.findViewById(R.id.list_menuInfo);
             Menu_checkBox = (CheckBox) itemView.findViewById(R.id.Menu_checkBox);
         }

@@ -8,7 +8,7 @@
     android:padding="12dp">
 
     <TextView
-        android:id="@+id/list_shop_menuName"
+        android:id="@+id/list_menuName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/list_shop_menuPrice"
+        android:id="@+id/list_menuPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"

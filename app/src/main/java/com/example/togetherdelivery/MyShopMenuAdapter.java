@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,14 +24,14 @@ public class MyShopMenuAdapter extends RecyclerView.Adapter<MyShopMenuAdapter.Li
 
     @NonNull
     @Override
-    public MyShopMenuAdapter.ListviewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListviewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.list_shopbag_menu, parent, false);
 
-        return new MyShopMenuAdapter.ListviewHoler(v);
+        return new ListviewHoler(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyShopMenuAdapter.ListviewHoler holder, int position) {
+    public void onBindViewHolder(@NonNull ListviewHoler holder, int position) {
 
         MenuModel menuModel = menuModelArrayList.get(position);
 

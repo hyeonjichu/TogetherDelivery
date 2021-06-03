@@ -1,11 +1,9 @@
 package com.example.togetherdelivery;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,7 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
     @NonNull
     @NotNull
     @Override
-    public MyAdapter.ListviewHoler onCreateViewHolder(@NonNull @org.jetbrains.annotations.NotNull ViewGroup parent, int viewType) {
+    public MyAdapter.ListviewHoler onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.list_store, parent,false);
 
@@ -51,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull MyAdapter.ListviewHoler holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull MyAdapter.ListviewHoler holder, int position) {
 
         ProductsModel productsModel = productsModelArrayList.get(position);
 
@@ -72,7 +70,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListviewHoler> {
 
 
 
-        public ListviewHoler(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
+        public ListviewHoler(@NonNull @NotNull View itemView) {
             super(itemView);
             storeName = itemView.findViewById(R.id.list_storeName);
             storeAddr = itemView.findViewById(R.id.list_storeAdd);

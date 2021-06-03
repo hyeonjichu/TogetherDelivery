@@ -31,6 +31,7 @@ public class AloneShopBagActivity extends AppCompatActivity {
         orderMoney = findViewById(R.id.orderMoney);
 
         Intent togetherIntent = getIntent(); // 데이터 수신
+        ArrayList<MenuModel> menuModelArrayList = (ArrayList<MenuModel>) togetherIntent.getSerializableExtra("menuModelArrayList");
         userId = togetherIntent.getStringExtra("id");
         storeId = togetherIntent.getStringExtra("store");
 
@@ -46,9 +47,10 @@ public class AloneShopBagActivity extends AppCompatActivity {
         shopBagListView.setLayoutManager(new LinearLayoutManager(this));
         myMenuAdapter = new MyMenuAdapter(AloneShopBagActivity.this,shopBagArrayList);
 
-        ArrayList<MenuModel> menuModelArrayList = (ArrayList<MenuModel>) togetherIntent.getSerializableExtra("menuModelArrayList");
+
+
         for (int i = 0; i < menuModelArrayList.size(); i++){
-            if(menuModelArrayList.get(i).isSelected()){
+            if(menuModelArrayList.get(i).isSelected() == true){
                 shopBagArrayList.add(menuModelArrayList.get(i));
                 allMoney = allMoney + Integer.parseInt(menuModelArrayList.get(i).menuPrice);
             }
@@ -58,11 +60,9 @@ public class AloneShopBagActivity extends AppCompatActivity {
         shopBagListView.setAdapter(myMenuAdapter);
 
 
-
         buy_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent togetherIntent = new Intent(AloneShopBagActivity.this, PurchaseWaitingActivity.class);
                 Intent purchaseIntent = new Intent(AloneShopBagActivity.this, PurchaseActivity.class);
                 purchaseIntent.putExtra("menuModelArrayList",menuModelArrayList);
                 purchaseIntent.putExtra("id",userId);

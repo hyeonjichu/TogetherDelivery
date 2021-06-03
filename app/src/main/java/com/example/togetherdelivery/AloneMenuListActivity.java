@@ -44,7 +44,7 @@ public class AloneMenuListActivity extends AppCompatActivity {
 
         Intent intent = getIntent(); // 데이터 수신
         storeId = intent.getStringExtra("storeId");
-        userId = intent.getStringExtra("id");
+        userId=intent.getStringExtra("id");
 
         //final CheckBox checkBox = (CheckBox)findViewById(R.id.Menu_checkBox);
 
@@ -69,8 +69,8 @@ public class AloneMenuListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent togetherIntent = new Intent(AloneMenuListActivity.this, AloneShopBagActivity.class);
                 togetherIntent.putExtra("menuModelArrayList",menuModelArrayList);
-                togetherIntent.putExtra("store",storeId);
                 togetherIntent.putExtra("id",userId);
+                togetherIntent.putExtra("store",storeId);
                 startActivity(togetherIntent);
             }
         });

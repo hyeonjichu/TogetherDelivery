@@ -8,24 +8,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/together_shop_bag_Recycler"
         android:layout_width="0dp"
-        android:layout_height="442dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="258dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
         android:id="@+id/together_list_btn"
-        android:layout_width="252dp"
-        android:layout_height="57dp"
-        android:text="같이 배달 등록하기"
+        android:layout_width="153dp"
+        android:layout_height="69dp"
+        android:text="같이 리스트 만들기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -33,5 +27,21 @@
         app:layout_constraintTop_toBottomOf="@+id/together_shop_bag_Recycler"
         app:layout_constraintTop_toTopOf="@+id/together_shop_bag_Recycler"
         app:layout_constraintVertical_bias="0.688" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="36dp"
+        android:text="아래 메뉴들을 선택 하셨습니다."
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/together_shop_bag_Recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.364" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

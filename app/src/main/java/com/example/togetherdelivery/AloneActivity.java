@@ -38,12 +38,12 @@ public class AloneActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alone);
 
+        Intent MainIntent = getIntent();
+        userId = MainIntent.getStringExtra("id");
+
         getSupportActionBar().setIcon(R.drawable.delivery);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        Intent intent = getIntent();
-        userId = intent.getStringExtra("id");
 
         aloneListBtn = findViewById(R.id.aloneListBtn);
 

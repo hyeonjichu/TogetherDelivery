@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class TogetherActivity extends AppCompatActivity {
     ArrayList<ProductsModel> productsModelArrayList;
     MyAdapter myAdapter;
     ProgressDialog progressDialog;
-    String userId;
+    Button store_together_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class TogetherActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.delivery);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        store_together_btn = findViewById(R.id.store_together_btn);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -64,6 +67,14 @@ public class TogetherActivity extends AppCompatActivity {
         });
         mStoreListView.setAdapter(myAdapter);
         EventChangeListener();
+
+        store_together_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TogetherActivity.this, TogetherListActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
