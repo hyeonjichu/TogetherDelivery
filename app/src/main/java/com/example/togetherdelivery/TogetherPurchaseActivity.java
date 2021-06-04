@@ -124,30 +124,34 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
             }
         });
 
-        DocumentReference doc3 = db.collection("shopBag").document(ranNum);
-        doc3.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        curPeople = Integer.parseInt(document.getData().get("curPeople").toString());
-                        price = Integer.parseInt(document.getData().get("price").toString());
-                        place=document.getData().get("place").toString();
-                        peopleNum=document.getData().get("peopleNum").toString();
+        if (ranNum != null) {
+            DocumentReference doc3 = db.collection("shopBag").document(ranNum);
+            doc3.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            curPeople = Integer.parseInt(document.getData().get("curPeople").toString());
+                            price = Integer.parseInt(document.getData().get("price").toString());
+                            place=document.getData().get("place").toString();
+                            peopleNum=document.getData().get("peopleNum").toString();
 
-                        finishTime=document.getData().get("finishTime").toString();
-                        System.out.println("1111111111111111");
-                        System.out.println(finishTime);
+                            finishTime=document.getData().get("finishTime").toString();
+                            System.out.println("1111111111111111");
+                            System.out.println(finishTime);
+                        } else {
+                            Log.d(TAG, "No such document");
+                        }
                     } else {
-                        Log.d(TAG, "No such document");
+                        Log.d(TAG, "get failed with ", task.getException());
                     }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
                 }
-            }
-        });
+            });
+
+        }
+
 
         if(ranNum == null){
             togetheOrderBtn.setOnClickListener(new View.OnClickListener() {
