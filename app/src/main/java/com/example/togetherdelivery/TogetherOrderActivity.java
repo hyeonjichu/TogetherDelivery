@@ -32,6 +32,7 @@ import java.util.Map;
 public class TogetherOrderActivity extends AppCompatActivity {
 
     String userId, storeId, ranNum;
+    //PeopleModel menuModel,menuModel2,menuModel3,menuModel4,menuModel5,menuModel6,menuModel7,menuModel8, menuModel9,menuModel10;
     Button finalOrderBtn;
     RecyclerView MenuListView;
     ArrayList<PeopleModel> peopleModelArrayList;
@@ -117,9 +118,8 @@ public class TogetherOrderActivity extends AppCompatActivity {
     }
 
     public void EventChangeListener() {
-        db.collection("shopBag").document(ranNum)
-                .collection(ranNum)
-                //.whereEqualTo("ranNum", ranNum)
+        db.collection("shopBag").document(ranNum).collection(ranNum)
+                //.whereEqualTo("ceoId", storeId)
                 .addSnapshotListener(new EventListener<QuerySnapshot>()
                 {
                     @Override

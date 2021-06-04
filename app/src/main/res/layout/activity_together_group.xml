@@ -210,4 +210,16 @@
         app:layout_constraintTop_toBottomOf="@+id/togetherJoinBtn"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/comBtn"
+        android:layout_width="264dp"
+        android:layout_height="45dp"
+        android:text="주문 완료하기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

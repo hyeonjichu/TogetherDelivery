@@ -32,7 +32,7 @@ import java.util.Map;
 public class TogetherGroupActivity extends AppCompatActivity {
 
     TextView text_storeName, text_curStatus, text_finishTime, text_peopleNum, text_place, text_curPeople;
-    Button togetherJoinBtn, togetherOrderBtn;
+    Button togetherJoinBtn, togetherOrderBtn,comBtn;
     ImageButton chat_btn, trash_can_btn;
     String storeId, userId;
     FirebaseFirestore db;
@@ -60,6 +60,7 @@ public class TogetherGroupActivity extends AppCompatActivity {
         togetherOrderBtn=findViewById(R.id.togetherOrderBtn);
         chat_btn = findViewById(R.id.chat_btn);
         trash_can_btn = findViewById(R.id.trash_can_btn);
+        comBtn = findViewById(R.id.comBtn);
 
         Intent togetherIntent = getIntent(); // 데이터 수신
         TogetherListModel togetherListModel = (TogetherListModel) togetherIntent.getSerializableExtra("togetherListModel");
@@ -77,12 +78,15 @@ public class TogetherGroupActivity extends AppCompatActivity {
 
         if(togetherListModel.orderId.equals(userId)){
             togetherJoinBtn.setVisibility(View.GONE);
+            comBtn.setVisibility(View.GONE);
         }else{
             togetherOrderBtn.setVisibility(View.GONE);
+            comBtn.setVisibility(View.GONE);
         }
         if(togetherListModel.curStatus.equals("모집 완료")){
             togetherJoinBtn.setVisibility(View.GONE);
             togetherOrderBtn.setVisibility(View.GONE);
+            comBtn.setVisibility(View.VISIBLE);
         }
 
         chat_btn.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +103,17 @@ public class TogetherGroupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myRef.removeValue();
+            }
+        });
+
+        comBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TogetherGroupActivity.this, TogetherOrderActivity.class);
+                intent.putExtra("id",userId);
+                intent.putExtra("storeId",storeId);
+                intent.putExtra("ranNum",togetherListModel.ranNum);
+                startActivity(intent);
             }
         });
 

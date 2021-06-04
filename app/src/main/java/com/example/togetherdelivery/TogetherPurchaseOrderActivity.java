@@ -45,7 +45,26 @@ public class TogetherPurchaseOrderActivity extends AppCompatActivity {
         price = intent.getStringExtra("price");
         storeId = intent.getStringExtra("storeId");
         menu1= intent.getStringExtra("menu1");
-        menu2=intent.getStringExtra("menu2");
+        if(intent.getStringExtra("menu2") !=null){
+            menu2=intent.getStringExtra("menu2");
+        }if(intent.getStringExtra("menu3") !=null){
+            menu3=intent.getStringExtra("menu3");
+        }if(intent.getStringExtra("menu4") !=null){
+            menu4=intent.getStringExtra("menu4");
+        }if(intent.getStringExtra("menu5") !=null){
+            menu5=intent.getStringExtra("menu5");
+        }if(intent.getStringExtra("menu6") !=null){
+            menu6=intent.getStringExtra("menu6");
+        }if(intent.getStringExtra("menu7") !=null){
+            menu7=intent.getStringExtra("menu7");
+        }if(intent.getStringExtra("menu8") !=null){
+            menu8=intent.getStringExtra("menu8");
+        }if(intent.getStringExtra("menu9") !=null){
+            menu9=intent.getStringExtra("menu9");
+        }if(intent.getStringExtra("menu10") !=null){
+            menu10=intent.getStringExtra("menu10");
+        }
+
         ranNum=intent.getStringExtra("ranNum");
 
         purText = findViewById(R.id.purText);
@@ -54,8 +73,27 @@ public class TogetherPurchaseOrderActivity extends AppCompatActivity {
 
         purText.setText(userId+"님의 결제 내역입니다.");
         menuText.setText(menu1);
-        menuText.setText("\n");
-        menuText.setText(menu2);
+        menuText.append("\n");
+        if(menu2 != null){
+            menuText.append(menu2);
+            menuText.append("\n");
+        }
+        if(menu3 != null){menuText.append(menu3);
+            menuText.append("\n");}
+        if(menu4 != null){ menuText.append(menu4);
+            menuText.append("\n");}
+        if(menu5 != null){menuText.append(menu5);
+            menuText.append("\n");}
+        if(menu6 != null){menuText.append(menu6);
+            menuText.append("\n");}
+        if(menu7 != null){menuText.append(menu7);
+            menuText.append("\n");}
+        if(menu8 != null){menuText.append(menu8);
+            menuText.append("\n");}
+        if(menu9 != null){menuText.append(menu9);
+            menuText.append("\n");}
+        if(menu10 != null){menuText.append(menu10);}
+
 
         DocumentReference doc3 = db.collection("userInfo").document(userId);
         doc3.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -88,12 +126,12 @@ public class TogetherPurchaseOrderActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Map<String, Object> update = new HashMap<>();
-                                update.put("payment","yes");
+                                Map<String, Object> update1 = new HashMap<>();
+                                update1.put("payment","yes");
                                 //payment=yes로 변경하기
                                 db.collection("userInfo").document(userId)
                                         .collection(userId).document(ranNum)
-                                        .set(update, SetOptions.merge())
+                                        .set(update1, SetOptions.merge())
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {

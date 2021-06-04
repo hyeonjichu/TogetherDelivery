@@ -67,7 +67,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ListviewHo
             price = itemView.findViewById(R.id.list_people_price);
             pay = itemView.findViewById(R.id.list_people_pay);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+           /* itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = getBindingAdapterPosition();
@@ -78,7 +78,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ListviewHo
                         }
                     }
                 }
-            });
+            });*/
         }
     }
 

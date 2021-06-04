@@ -29,7 +29,7 @@ import java.util.Map;
 public class TogetherPurchaseActivity extends AppCompatActivity {
 
     String userId, storeId, myMoney, storeName, ranNum, place, peopleNum, finishTime;
-    TextView togetherMainText, curMoney_t, allMoney_t, afterMoney_t;
+    TextView togetherMainText, curMoney_t, allMoney_t, afterMoney_t, text01, text02, text03, text04, text05;
     EditText togetherPlace, hour, min, people;
     Button togetheOrderBtn;
     private String TAG = "Hello!!!!!!!!!!!!!!!!!";
@@ -53,6 +53,11 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
         hour=findViewById(R.id.hour);
         min=findViewById(R.id.min);
         people=findViewById(R.id.people);
+        text01 = findViewById(R.id.text01);
+        text02 = findViewById(R.id.text02);
+        text03 = findViewById(R.id.text03);
+        text04 = findViewById(R.id.text04);
+        text05 = findViewById(R.id.text05);
 
         Intent togetherIntent = getIntent();
         userId = togetherIntent.getStringExtra("id");
@@ -137,10 +142,7 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
                             price = Integer.parseInt(document.getData().get("price").toString());
                             place=document.getData().get("place").toString();
                             peopleNum=document.getData().get("peopleNum").toString();
-
                             finishTime=document.getData().get("finishTime").toString();
-                            System.out.println("1111111111111111");
-                            System.out.println(finishTime);
                         } else {
                             Log.d(TAG, "No such document");
                         }
@@ -149,10 +151,9 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
                     }
                 }
             });
-
         }
 
-
+        //같이 배달 주문자
         if(ranNum == null){
             togetheOrderBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -171,8 +172,8 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
                     newOrder.put("peopleNum",people.getText().toString());
                     newOrder.put("curStatus","모집 중");
                     newOrder.put("curPeople","1");
+                    newOrder.put("payment","no");
                     newOrder.put("finishTime",hour.getText().toString()+"시"+min.getText().toString()+"분");
-
                     db.collection("shopBag").document(ranNum)
                             //.collection(ranNum).document(userId)
                             .set(newOrder)
@@ -188,7 +189,8 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
                                     newOrder2.put("orderId",userId);
                                     newOrder2.put("approval","waiting");
                                     newOrder2.put("complete","no");
-                                    newOrder2.put("menu1",shopBagArrayList.get(0).menuName);
+                                    newOrder2.put("menu1",shopBagArrayList.get(0));
+                                    newOrder2.put("payment","no");
                                     for(int i=1; i<shopBagArrayList.size(); i++){
                                         newOrder2.put("menu"+(i+1),shopBagArrayList.get(i));
                                     }
@@ -221,12 +223,18 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
             });
         }else{
             togetherPlace.setText(place);
-            System.out.println(place);
-            System.out.println("22222222222222222");
-            System.out.println(finishTime);
-            hour.setText(finishTime);
+            //hour.setText(finishTime);
             //min.setText(finishTime.substring(3,5));
-            people.setText(peopleNum);
+            //people.setText(peopleNum);
+            text01.setVisibility(View.INVISIBLE);
+            text02.setVisibility(View.INVISIBLE);
+            text03.setVisibility(View.INVISIBLE);
+            text04.setVisibility(View.INVISIBLE);
+            text05.setVisibility(View.INVISIBLE);
+
+            hour.setVisibility(View.INVISIBLE);
+            min.setVisibility(View.INVISIBLE);
+            people.setVisibility(View.INVISIBLE);
 
             togetheOrderBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -239,6 +247,7 @@ public class TogetherPurchaseActivity extends AppCompatActivity {
                     newOrder2.put("orderId",userId);
                     newOrder2.put("approval","waiting");
                     newOrder2.put("complete","no");
+                    newOrder2.put("payment","no");
                     newOrder2.put("menu1",shopBagArrayList.get(0));
                     for(int i=1; i<shopBagArrayList.size(); i++){
                         newOrder2.put("menu"+(i+1),shopBagArrayList.get(i));

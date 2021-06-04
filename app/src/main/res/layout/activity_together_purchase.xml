@@ -37,7 +37,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/text01"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:text="마감 시간:" />
@@ -50,7 +50,7 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/text02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -65,7 +65,7 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/text03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -78,7 +78,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/text04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -93,7 +93,7 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/text05"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
