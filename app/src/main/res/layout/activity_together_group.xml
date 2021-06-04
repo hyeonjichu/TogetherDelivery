@@ -6,6 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/trash_can_btn"
+        android:layout_width="70dp"
+        android:layout_height="52dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_btn"
+        app:layout_constraintVertical_bias="0.203"
+        app:srcCompat="@drawable/trash_can" />
+
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="91dp"
@@ -162,23 +175,27 @@
         android:id="@+id/chat_btn"
         android:layout_width="82dp"
         android:layout_height="84dp"
-        android:background="#1B1E88E5"
+        android:background="#001E88E5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.899"
+        app:layout_constraintVertical_bias="0.829"
         app:srcCompat="@drawable/smapptalk" />
 
     <Button
         android:id="@+id/togetherJoinBtn"
         android:layout_width="255dp"
         android:layout_height="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="음식 담기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/together_group_recycler"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/togetherOrderBtn"
@@ -186,7 +203,11 @@
         android:layout_height="57dp"
         android:layout_marginTop="7dp"
         android:text="주문하기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/togetherJoinBtn"
-        tools:layout_editor_absoluteX="31dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

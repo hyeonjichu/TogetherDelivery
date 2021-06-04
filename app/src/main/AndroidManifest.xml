@@ -33,6 +33,8 @@
         <activity android:name=".TogetherOrderActivity"></activity>
         <activity android:name=".TogetherPurchaseOrderActivity"></activity>
         <activity android:name=".TogetherOrderCompleActivity"></activity>
+        <activity android:name=".ChatMessageActivity"></activity>
+
     </application>
 
 </manifest>

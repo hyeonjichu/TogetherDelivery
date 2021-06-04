@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,9 +33,11 @@ public class TogetherGroupActivity extends AppCompatActivity {
 
     TextView text_storeName, text_curStatus, text_finishTime, text_peopleNum, text_place, text_curPeople;
     Button togetherJoinBtn, togetherOrderBtn;
+    ImageButton chat_btn, trash_can_btn;
     String storeId, userId;
     FirebaseFirestore db;
     private String TAG = "Hello!!!!!!!!!!!!!!!!!";
+    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -53,6 +58,8 @@ public class TogetherGroupActivity extends AppCompatActivity {
         text_curPeople=findViewById(R.id.text_curPeople);
         togetherJoinBtn=findViewById(R.id.togetherJoinBtn);
         togetherOrderBtn=findViewById(R.id.togetherOrderBtn);
+        chat_btn = findViewById(R.id.chat_btn);
+        trash_can_btn = findViewById(R.id.trash_can_btn);
 
         Intent togetherIntent = getIntent(); // 데이터 수신
         TogetherListModel togetherListModel = (TogetherListModel) togetherIntent.getSerializableExtra("togetherListModel");
@@ -65,6 +72,9 @@ public class TogetherGroupActivity extends AppCompatActivity {
         text_place.setText(togetherListModel.place);
         text_curPeople.setText(togetherListModel.curPeople);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference().child(togetherListModel.orderId).child(togetherListModel.storeName);
+
         if(togetherListModel.orderId.equals(userId)){
             togetherJoinBtn.setVisibility(View.GONE);
         }else{
@@ -74,6 +84,23 @@ public class TogetherGroupActivity extends AppCompatActivity {
             togetherJoinBtn.setVisibility(View.GONE);
             togetherOrderBtn.setVisibility(View.GONE);
         }
+
+        chat_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TogetherGroupActivity.this, ChatMessageActivity.class);
+                intent.putExtra("orderId", togetherListModel.orderId);
+                intent.putExtra("storeName", togetherListModel.storeName);
+                intent.putExtra("id",userId);
+                startActivity(intent);
+            }
+        });
+        trash_can_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef.removeValue();
+            }
+        });
 
         //함께 주문하기 => 해당 가게로 이동
         togetherJoinBtn.setOnClickListener(new View.OnClickListener() {
