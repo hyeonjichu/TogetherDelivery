@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.StyleableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,7 @@ public class TogetherListActivity extends AppCompatActivity {
 
     FirebaseFirestore firebaseFirestore;
 
+    String userId;
     RecyclerView mTogetherListView;
     ArrayList<TogetherListModel> togetherListModelArrayList;
     TogetherListAdapter togetherListAdapter;
@@ -39,7 +41,8 @@ public class TogetherListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        double ranNum = Math.random();
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("id");
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -59,8 +62,9 @@ public class TogetherListActivity extends AppCompatActivity {
             public void onItemClick(View v, int pos) {
                 Intent intent = new Intent(TogetherListActivity.this, TogetherGroupActivity.class);
                 intent.putExtra("togetherListModel", togetherListModelArrayList.get(pos));
+                intent.putExtra("id",userId);
+                intent.putExtra("storeId",togetherListModelArrayList.get(pos).storeId);
                 startActivity(intent);
-
             }
         });
         mTogetherListView.setAdapter(togetherListAdapter);
@@ -72,16 +76,13 @@ public class TogetherListActivity extends AppCompatActivity {
                     .addSnapshotListener(new EventListener<QuerySnapshot>() {
                         @Override
                         public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
-
                             if(error != null){
-
                                 if(progressDialog.isShowing())
                                     progressDialog.dismiss();
                                 Log.e("Firestore error", error.getMessage());
                                 return;
                             }
                             for (DocumentChange dc : value.getDocumentChanges()){
-
                                 if(dc.getType() == DocumentChange.Type.ADDED) {
                                     if (dc.getDocument().toObject(TogetherListModel.class).peopleNum != null) {
                                         togetherListModelArrayList.add(dc.getDocument().toObject(TogetherListModel.class));

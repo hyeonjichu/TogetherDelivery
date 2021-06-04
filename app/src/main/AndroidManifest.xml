@@ -27,7 +27,12 @@
         <activity android:name=".TogetherShopBagActivity"></activity>
         <activity android:name=".TogetherListActivity"></activity>
         <activity android:name=".TogetherMenuListActivity"></activity>
-        <activity android:name=".PurchaseActivity"></activity>
+        <activity android:name=".TogetherGroupActivity"></activity>
+        <activity android:name=".AlonePurchaseActivity"></activity>
+        <activity android:name=".TogetherPurchaseActivity"></activity>
+        <activity android:name=".TogetherOrderActivity"></activity>
+        <activity android:name=".TogetherPurchaseOrderActivity"></activity>
+        <activity android:name=".TogetherOrderCompleActivity"></activity>
     </application>
 
 </manifest>

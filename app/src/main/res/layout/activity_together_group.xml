@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -109,7 +110,7 @@
         app:layout_constraintVertical_bias="0.095" />
 
     <TextView
-        android:id="@+id/text_togetherNum"
+        android:id="@+id/text_curPeople"
         android:layout_width="10dp"
         android:layout_height="19dp"
         android:text="1"
@@ -130,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/text_togetherNum"
+        app:layout_constraintStart_toEndOf="@+id/text_curPeople"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049" />
 
@@ -164,10 +165,28 @@
         android:background="#1B1E88E5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84"
+        app:layout_constraintVertical_bias="0.899"
         app:srcCompat="@drawable/smapptalk" />
+
+    <Button
+        android:id="@+id/togetherJoinBtn"
+        android:layout_width="255dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:text="음식 담기"
+        app:layout_constraintTop_toBottomOf="@+id/together_group_recycler"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <Button
+        android:id="@+id/togetherOrderBtn"
+        android:layout_width="246dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="7dp"
+        android:text="주문하기"
+        app:layout_constraintTop_toBottomOf="@+id/togetherJoinBtn"
+        tools:layout_editor_absoluteX="31dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

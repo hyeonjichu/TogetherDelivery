@@ -3,33 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="112dp"
-        android:layout_height="93dp"
-        app:srcCompat="@drawable/alone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="112dp"
+            android:layout_height="93dp"
+            app:srcCompat="@drawable/alone" />
+
+        <Button
+            android:id="@+id/aloneBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="혼자 배달" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="112dp"
+            android:layout_height="93dp"
+            app:srcCompat="@drawable/together" />
+
+        <Button
+            android:id="@+id/togetherBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="같이 배달"
+            tools:layout_marginTop="20dp" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/aloneBtn"
-        android:layout_width="match_parent"
+        android:id="@+id/paymentBtn"
+        android:layout_width="206dp"
         android:layout_height="wrap_content"
-        android:text="혼자 배달" />
-
-    <Button
-        android:id="@+id/togetherBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="같이 배달" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="112dp"
-        android:layout_height="93dp"
-        app:srcCompat="@drawable/together" />
+        android:text="결제하기" />
 
 </LinearLayout>

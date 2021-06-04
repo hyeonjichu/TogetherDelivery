@@ -5,23 +5,28 @@ import java.io.Serializable;
 // 받을 장소,
 public class TogetherListModel implements Serializable {
     String storeName;
+    String storeId;
     String orderId;
     String peopleNum;
     String curStatus;
     String ranNum;
     String place;
     String finishTime;
+    String curPeople;
+
 
     private TogetherListModel() {}
 
-    private TogetherListModel(String storeName,String orderId, String peopleNum, String curStatus, String ranNum, String place, String finishTime) {
+    private TogetherListModel(String storeName, String storeId, String orderId, String peopleNum, String curStatus, String ranNum, String place, String finishTime, String curPeople) {
         this.storeName = storeName;
+        this.storeId = storeId;
         this.orderId = orderId;
         this.peopleNum = peopleNum;
         this.curStatus = curStatus;
         this.ranNum = ranNum;
         this.place = place;
         this.finishTime = finishTime;
+        this.curPeople = curPeople;
 
     }
 
@@ -31,6 +36,14 @@ public class TogetherListModel implements Serializable {
 
     public void setStoreName(String storeName) {
         this.storeName = storeName;
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 
     public String getOrderId() {
@@ -81,6 +94,13 @@ public class TogetherListModel implements Serializable {
 
     public void setFinishTime(String finishTime) {
         this.finishTime = finishTime;
+    }
+
+    public String getCurPeople() {
+        return curPeople;
+    }
+    public void setCurPeople(String curPeople) {
+        this.curPeople = curPeople;
     }
 
 

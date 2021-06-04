@@ -47,8 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-
-
                         if(id.equals(document.get("id").toString()) && pw.equals(document.get("pw").toString())){
                             intent.putExtra("id",document.get("id").toString());
                             startActivity(intent);

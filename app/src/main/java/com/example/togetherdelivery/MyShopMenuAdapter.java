@@ -49,8 +49,8 @@ public class MyShopMenuAdapter extends RecyclerView.Adapter<MyShopMenuAdapter.Li
 
         public ListviewHoler(@NonNull @NotNull View itemView) {
             super(itemView);
-            menuName = itemView.findViewById(R.id.list_shop_menuName);
-            menuPrice = itemView.findViewById(R.id.list_shop_menuPrice);
+            menuName = itemView.findViewById(R.id.list_people_name);
+            menuPrice = itemView.findViewById(R.id.list_people_price);
         }
     }
 }

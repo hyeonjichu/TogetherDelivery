@@ -26,7 +26,7 @@ public class TogetherMenuListActivity extends AppCompatActivity {
     ArrayList<MenuModel> menuModelArrayList;
     MyMenuAdapter myMenuAdapter;
     ProgressDialog progressDialog;
-    String storeId;
+    String storeId, userId, ranNum;
     ImageButton menu_shopbag_btn;
 
 
@@ -43,6 +43,10 @@ public class TogetherMenuListActivity extends AppCompatActivity {
 
         Intent intent = getIntent(); // 데이터 수신
         storeId = intent.getStringExtra("storeId");
+        userId=intent.getStringExtra("id");
+        if(intent.getStringExtra("ranNum")!=null){
+            ranNum=intent.getStringExtra("ranNum");
+        }
 
         //final CheckBox checkBox = (CheckBox)findViewById(R.id.Menu_checkBox);
 
@@ -65,9 +69,20 @@ public class TogetherMenuListActivity extends AppCompatActivity {
         menu_shopbag_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent togetherIntent = new Intent(TogetherMenuListActivity.this, TogetherShopBagActivity.class);
-                togetherIntent.putExtra("menuModelArrayList",menuModelArrayList);
-                startActivity(togetherIntent);
+                if(ranNum == null){
+                    Intent togetherIntent = new Intent(TogetherMenuListActivity.this, TogetherShopBagActivity.class);
+                    togetherIntent.putExtra("menuModelArrayList",menuModelArrayList);
+                    togetherIntent.putExtra("storeId",storeId);
+                    togetherIntent.putExtra("id",userId);
+                    startActivity(togetherIntent);
+                }else{
+                    Intent togetherIntent = new Intent(TogetherMenuListActivity.this, TogetherShopBagActivity.class);
+                    togetherIntent.putExtra("menuModelArrayList",menuModelArrayList);
+                    togetherIntent.putExtra("storeId",storeId);
+                    togetherIntent.putExtra("ranNum",ranNum);
+                    togetherIntent.putExtra("id",userId);
+                    startActivity(togetherIntent);
+                }
             }
         });
 
@@ -79,18 +94,14 @@ public class TogetherMenuListActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
-
                         if(error != null){
-
                             if(progressDialog.isShowing())
                                 progressDialog.dismiss();
                             Log.e("Firestore error", error.getMessage());
                             return;
                         }
                         for (DocumentChange dc : value.getDocumentChanges()){
-
                             if(dc.getType() == DocumentChange.Type.ADDED){
-
                                 menuModelArrayList.add(dc.getDocument().toObject(MenuModel.class));
                             }
                             myMenuAdapter.notifyDataSetChanged();

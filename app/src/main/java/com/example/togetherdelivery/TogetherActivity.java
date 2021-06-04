@@ -25,7 +25,7 @@ public class TogetherActivity extends AppCompatActivity {
 
     FirebaseFirestore firebaseFirestore;
 
-
+    String userId;
     RecyclerView mStoreListView;
     ArrayList<ProductsModel> productsModelArrayList;
     MyAdapter myAdapter;
@@ -36,6 +36,9 @@ public class TogetherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_together);
+
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("id");
 
         getSupportActionBar().setIcon(R.drawable.delivery);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -60,7 +63,10 @@ public class TogetherActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int pos) {
                 Intent intent = new Intent(TogetherActivity.this, TogetherMenuListActivity.class);
+                System.out.println("111111111111111111");
+                System.out.println(productsModelArrayList.get(pos).storeId);
                 intent.putExtra("storeId", productsModelArrayList.get(pos).storeId);
+                intent.putExtra("id",userId);
                 startActivity(intent);
 
             }
@@ -72,11 +78,10 @@ public class TogetherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TogetherActivity.this, TogetherListActivity.class);
+                intent.putExtra("id",userId);
                 startActivity(intent);
             }
         });
-
-
     }
 
     private void EventChangeListener() {

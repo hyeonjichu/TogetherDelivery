@@ -50,6 +50,7 @@ public class TogetherListAdapter extends RecyclerView.Adapter<TogetherListAdapte
         holder.curStatus.setText(togetherListModel.curStatus);
         holder.place.setText(togetherListModel.place);
         holder.finishTime.setText(togetherListModel.finishTime);
+        holder.curPeople.setText(togetherListModel.curPeople);
     }
 
     @Override
@@ -63,6 +64,7 @@ public class TogetherListAdapter extends RecyclerView.Adapter<TogetherListAdapte
         TextView curStatus;
         TextView place;
         TextView finishTime;
+        TextView curPeople;
         public ListviewHoler(@NonNull @NotNull View itemView) {
             super(itemView);
             storeName = itemView.findViewById(R.id.together_list_storeName);
@@ -70,9 +72,8 @@ public class TogetherListAdapter extends RecyclerView.Adapter<TogetherListAdapte
             curStatus = itemView.findViewById(R.id.together_list_curStatus);
             place = itemView.findViewById(R.id.together_list_place);
             finishTime = itemView.findViewById(R.id.together_list_finishTime);
+            curPeople = itemView.findViewById(R.id.curPeople);
             itemView.setOnClickListener(new View.OnClickListener() {
-
-
                 @Override
                 public void onClick(View v) {
                     int pos = getBindingAdapterPosition();

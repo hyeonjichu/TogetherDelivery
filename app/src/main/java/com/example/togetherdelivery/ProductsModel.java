@@ -7,8 +7,6 @@ public class ProductsModel implements Serializable {
     String storeAddr;
     String storeId;
 
-
-
     private ProductsModel() {}
 
     private ProductsModel(String storeName, String storeAddr, String storeId) {

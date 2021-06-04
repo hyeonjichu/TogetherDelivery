@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PurchaseActivity extends AppCompatActivity {
+public class AlonePurchaseActivity extends AppCompatActivity {
 
     String userId, storeId, myMoney;
     TextView purMainText, curMoney, allMoney, afterMoney;
@@ -42,14 +42,14 @@ public class PurchaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_purchase);
+        setContentView(R.layout.activity_alone_purchase);
 
-        purMainText=findViewById(R.id.purMainText);
-        curMoney=findViewById(R.id.curMoney);
-        allMoney=findViewById(R.id.allMoney);
-        afterMoney=findViewById(R.id.afterMoney);
-        myPlace=findViewById(R.id.myPlace);
-        orderBtn=findViewById(R.id.orderBtn);
+        purMainText=findViewById(R.id.togetherMainText);
+        curMoney=findViewById(R.id.curMoney_t);
+        allMoney=findViewById(R.id.allMoney_t);
+        afterMoney=findViewById(R.id.afterMoney_t);
+        myPlace=findViewById(R.id.togetherPlace);
+        orderBtn=findViewById(R.id.togetheOrderBtn);
 
         Intent togetherIntent = getIntent();
         userId = togetherIntent.getStringExtra("id");
@@ -61,10 +61,10 @@ public class PurchaseActivity extends AppCompatActivity {
 
         shopBagArrayList = new ArrayList<MenuModel>();
 
-        shopBagListView = findViewById(R.id.orderList);
+        shopBagListView = findViewById(R.id.togetherOrderList);
         shopBagListView.setHasFixedSize(true);
         shopBagListView.setLayoutManager(new LinearLayoutManager(this));
-        myShopMenuAdapter = new MyShopMenuAdapter(PurchaseActivity.this,shopBagArrayList);
+        myShopMenuAdapter = new MyShopMenuAdapter(AlonePurchaseActivity.this,shopBagArrayList);
 
         ArrayList<MenuModel> menuModelArrayList = (ArrayList<MenuModel>) togetherIntent.getSerializableExtra("menuModelArrayList");
         for (int i = 0; i < menuModelArrayList.size(); i++){
@@ -105,17 +105,16 @@ public class PurchaseActivity extends AppCompatActivity {
                 String ranNum = String.valueOf(dVal);
                 Map<String, Object> newOrder = new HashMap<>();
                 newOrder.put("ranNum",ranNum);
-                newOrder.put("store",storeId);
-                newOrder.put("price",orderMoney);
+                newOrder.put("storeId",storeId);
+                newOrder.put("price",String.valueOf(orderMoney));
                 newOrder.put("place",myPlace.getText().toString());
                 newOrder.put("orderId",userId);
                 //newOrder.put("orderTime",);
-                newOrder.put("approval ","waiting");
-                newOrder.put("complete ","no");
-                newOrder.put("menu1",shopBagArrayList.get(0));
-                for(int i=1; i<shopBagArrayList.size(); i++){
+                newOrder.put("approval","waiting");
+                newOrder.put("complete","no");
+                /*for(int i=1; i<shopBagArrayList.size(); i++){
                     newOrder.put("menu"+(i+1),shopBagArrayList.get(i));
-                }
+                }*/
 
                 db.collection("shopBag").document(ranNum)
                         //.collection("0.045693480562439714").document(userId)
@@ -124,15 +123,45 @@ public class PurchaseActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Map<String, Object> myMoneyUpdate = new HashMap<>();
-                                myMoneyUpdate.put("money",myMoney);
+                                Map<String, Object> myOrder = new HashMap<>();
+                                myOrder.put("ranNum",ranNum);
+                                myOrder.put("storeId",storeId);
+                                myOrder.put("price",String.valueOf(orderMoney));
+                                myOrder.put("orderId",userId);
+                                myOrder.put("approval","waiting");
+                                myOrder.put("complete","no");
+                                myOrder.put("menu1",shopBagArrayList.get(0));
+                                for(int i=1; i<shopBagArrayList.size(); i++){
+                                    myOrder.put("menu"+(i+1),shopBagArrayList.get(i));
+                                }
 
-                                db.collection("userInfo").document(userId)
-                                        .set(myMoneyUpdate, SetOptions.merge())
+                                db.collection("shopBag").document(ranNum)
+                                        .collection(ranNum).document(userId)
+                                        .set(myOrder)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.d(TAG, "DocumentSnapshot successfully written!");
+                                                Map<String, Object> myMoneyUpdate = new HashMap<>();
+                                                myMoneyUpdate.put("money",myMoney);
+
+                                                db.collection("userInfo").document(userId)
+                                                        .set(myMoneyUpdate, SetOptions.merge())
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                Log.d(TAG, "DocumentSnapshot successfully written!");
+                                                                Intent intent = new Intent(AlonePurchaseActivity.this, PurchaseWaitingActivity.class);
+                                                                startActivity(intent);
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                Log.w(TAG, "Error writing document", e);
+                                                            }
+                                                        });
+
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -141,8 +170,6 @@ public class PurchaseActivity extends AppCompatActivity {
                                                 Log.w(TAG, "Error writing document", e);
                                             }
                                         });
-                                Intent intent = new Intent(PurchaseActivity.this, PurchaseWaitingActivity.class);
-                                startActivity(intent);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

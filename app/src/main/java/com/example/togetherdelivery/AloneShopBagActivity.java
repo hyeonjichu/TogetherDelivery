@@ -63,7 +63,7 @@ public class AloneShopBagActivity extends AppCompatActivity {
         buy_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent purchaseIntent = new Intent(AloneShopBagActivity.this, PurchaseActivity.class);
+                Intent purchaseIntent = new Intent(AloneShopBagActivity.this, AlonePurchaseActivity.class);
                 purchaseIntent.putExtra("menuModelArrayList",menuModelArrayList);
                 purchaseIntent.putExtra("id",userId);
                 purchaseIntent.putExtra("allMoney",allMoney);
