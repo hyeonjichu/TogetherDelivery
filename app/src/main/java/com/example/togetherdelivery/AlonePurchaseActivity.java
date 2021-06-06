@@ -45,9 +45,9 @@ public class AlonePurchaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alone_purchase);
 
         purMainText=findViewById(R.id.togetherMainText);
-        curMoney=findViewById(R.id.curMoney_t);
-        allMoney=findViewById(R.id.allMoney_t);
-        afterMoney=findViewById(R.id.afterMoney_t);
+        curMoney=findViewById(R.id.curMoney_a);
+        allMoney=findViewById(R.id.allMoney_a);
+        afterMoney=findViewById(R.id.afterMoney_a);
         myPlace=findViewById(R.id.togetherPlace);
         orderBtn=findViewById(R.id.togetheOrderBtn);
 
@@ -111,6 +111,7 @@ public class AlonePurchaseActivity extends AppCompatActivity {
                 newOrder.put("orderId",userId);
                 //newOrder.put("orderTime",);
                 newOrder.put("approval","waiting");
+                newOrder.put("payment","yes");
                 newOrder.put("complete","no");
                 /*for(int i=1; i<shopBagArrayList.size(); i++){
                     newOrder.put("menu"+(i+1),shopBagArrayList.get(i));
@@ -130,6 +131,7 @@ public class AlonePurchaseActivity extends AppCompatActivity {
                                 myOrder.put("orderId",userId);
                                 myOrder.put("approval","waiting");
                                 myOrder.put("complete","no");
+                                myOrder.put("payment","yes");
                                 myOrder.put("menu1",shopBagArrayList.get(0));
                                 for(int i=1; i<shopBagArrayList.size(); i++){
                                     myOrder.put("menu"+(i+1),shopBagArrayList.get(i));
@@ -152,6 +154,8 @@ public class AlonePurchaseActivity extends AppCompatActivity {
                                                             public void onSuccess(Void aVoid) {
                                                                 Log.d(TAG, "DocumentSnapshot successfully written!");
                                                                 Intent intent = new Intent(AlonePurchaseActivity.this, PurchaseWaitingActivity.class);
+                                                                intent.putExtra("id",userId);
+                                                                intent.putExtra("ranNum",ranNum);
                                                                 startActivity(intent);
                                                             }
                                                         })

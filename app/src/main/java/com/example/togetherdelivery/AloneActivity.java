@@ -65,6 +65,7 @@ public class AloneActivity extends AppCompatActivity{
             public void onItemClick(View v, int pos) {
                 Intent intent = new Intent(AloneActivity.this, AloneMenuListActivity.class);
                 intent.putExtra("storeId", productsModelArrayList.get(pos).storeId);
+                intent.putExtra("limitMoney",productsModelArrayList.get(pos).limitMoney);
                 intent.putExtra("id",userId);
                 startActivity(intent);
 

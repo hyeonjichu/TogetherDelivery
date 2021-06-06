@@ -63,9 +63,8 @@ public class TogetherActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int pos) {
                 Intent intent = new Intent(TogetherActivity.this, TogetherMenuListActivity.class);
-                System.out.println("111111111111111111");
-                System.out.println(productsModelArrayList.get(pos).storeId);
                 intent.putExtra("storeId", productsModelArrayList.get(pos).storeId);
+                intent.putExtra("limitMoney",productsModelArrayList.get(pos).limitMoney);
                 intent.putExtra("id",userId);
                 startActivity(intent);
 

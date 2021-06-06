@@ -6,13 +6,23 @@ public class ProductsModel implements Serializable {
     String storeName;
     String storeAddr;
     String storeId;
+    String limitMoney;
 
     private ProductsModel() {}
 
-    private ProductsModel(String storeName, String storeAddr, String storeId) {
+    public String getLimitMoney() {
+        return limitMoney;
+    }
+
+    public void setLimitMoney(String limitMoney) {
+        this.limitMoney = limitMoney;
+    }
+
+    private ProductsModel(String storeName, String storeAddr, String storeId, String limitMoney) {
         this.storeName = storeName;
         this.storeAddr = storeAddr;
         this.storeId = storeId;
+        this.limitMoney = limitMoney;
 
     }
 

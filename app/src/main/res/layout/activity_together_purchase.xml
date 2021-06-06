@@ -127,14 +127,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="총 결제 금액:" />
+        android:text="결제 금액:" />
 
     <TextView
         android:id="@+id/afterMoney_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="결제 후 잔액:" />
+        android:text="결제 후 남은 금액:" />
 
     <Button
         android:id="@+id/togetheOrderBtn"

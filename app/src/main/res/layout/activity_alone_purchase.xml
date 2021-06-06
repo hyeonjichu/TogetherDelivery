@@ -48,21 +48,21 @@
         android:textSize="23sp" />
 
     <TextView
-        android:id="@+id/curMoney_t"
+        android:id="@+id/curMoney_a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="현재 잔액:" />
 
     <TextView
-        android:id="@+id/allMoney_t"
+        android:id="@+id/allMoney_a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="총 결제 금액:" />
 
     <TextView
-        android:id="@+id/afterMoney_t"
+        android:id="@+id/afterMoney_a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

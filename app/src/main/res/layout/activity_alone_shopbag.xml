@@ -8,7 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shop_bag_Recycler"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="442dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"

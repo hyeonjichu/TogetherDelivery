@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +28,9 @@ public class AloneMenuListActivity extends AppCompatActivity {
     ArrayList<MenuModel> menuModelArrayList;
     MyMenuAdapter myMenuAdapter;
     ProgressDialog progressDialog;
-    String storeId, userId;
+    String storeId, userId, limitMoney;
     ImageButton menu_shopbag_btn;
+    TextView limitText;
 
 
     @Override
@@ -41,10 +43,16 @@ public class AloneMenuListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         menu_shopbag_btn = findViewById(R.id.menu_shopbag_btn);
+        limitText = findViewById(R.id.limitText);
+
 
         Intent intent = getIntent(); // 데이터 수신
         storeId = intent.getStringExtra("storeId");
         userId=intent.getStringExtra("id");
+        limitMoney = intent.getStringExtra("limitMoney");
+
+        limitText.append("\n");
+        limitText.append("최소 주문금액은 "+limitMoney+"원 입니다.");
 
         //final CheckBox checkBox = (CheckBox)findViewById(R.id.Menu_checkBox);
 

@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,10 +33,10 @@ import java.util.Map;
 
 public class TogetherGroupActivity extends AppCompatActivity {
 
-    TextView text_storeName, text_curStatus, text_finishTime, text_peopleNum, text_place, text_curPeople;
+    TextView text_storeName, text_curStatus, text_finishTime, text_peopleNum, text_place, text_curPeople, mText;
     Button togetherJoinBtn, togetherOrderBtn,comBtn;
     ImageButton chat_btn, trash_can_btn;
-    String storeId, userId;
+    String storeId, userId, limitMoney;
     FirebaseFirestore db;
     private String TAG = "Hello!!!!!!!!!!!!!!!!!";
     private DatabaseReference myRef;
@@ -61,6 +63,7 @@ public class TogetherGroupActivity extends AppCompatActivity {
         chat_btn = findViewById(R.id.chat_btn);
         trash_can_btn = findViewById(R.id.trash_can_btn);
         comBtn = findViewById(R.id.comBtn);
+        mText = findViewById(R.id.mText);
 
         Intent togetherIntent = getIntent(); // 데이터 수신
         TogetherListModel togetherListModel = (TogetherListModel) togetherIntent.getSerializableExtra("togetherListModel");
@@ -72,6 +75,26 @@ public class TogetherGroupActivity extends AppCompatActivity {
         text_peopleNum.setText(togetherListModel.peopleNum);
         text_place.setText(togetherListModel.place);
         text_curPeople.setText(togetherListModel.curPeople);
+
+        DocumentReference doc = db.collection("ceoInfo").document(storeId);
+        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        limitMoney = document.getData().get("limitMoney").toString();
+                        mText.append(togetherListModel.price+"/"+limitMoney);
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference().child(togetherListModel.orderId).child(togetherListModel.storeName);

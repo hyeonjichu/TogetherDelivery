@@ -7,12 +7,23 @@
     <TextView
         android:id="@+id/purText"
         android:layout_width="match_parent"
-        android:layout_height="49dp" />
+        android:layout_height="49dp"
+        android:gravity="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/menuText"
         android:layout_width="match_parent"
-        android:layout_height="398dp" />
+        android:layout_height="398dp"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/moneyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="총 결제 금액:"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/purBtn"

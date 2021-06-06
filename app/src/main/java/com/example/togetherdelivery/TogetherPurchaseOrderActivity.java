@@ -28,7 +28,7 @@ public class TogetherPurchaseOrderActivity extends AppCompatActivity {
     String userId, menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9, menu10, price, storeId, ranNum, curMoney;
     private SharedPreferences mPreferences;
     private String SharedPrefFile = "com.example.togetherdelivery";
-    TextView purText,menuText;
+    TextView purText,menuText, moneyText;
     Button purBtn;
     FirebaseFirestore db;
     private String TAG = "Hello!!!!!!!!!!!!!!!!!";
@@ -70,17 +70,20 @@ public class TogetherPurchaseOrderActivity extends AppCompatActivity {
         purText = findViewById(R.id.purText);
         menuText = findViewById(R.id.menuText);
         purBtn = findViewById(R.id.purBtn);
+        moneyText = findViewById(R.id.moneyText);
 
-        purText.setText(userId+"님의 결제 내역입니다.");
-        menuText.setText(menu1);
+        moneyText.append(price+"원");
+
+        purText.setText(userId+"님의"+storeId+"에서의 결제 내역입니다.");
+        menuText.setText("1. "+menu1);
         menuText.append("\n");
         if(menu2 != null){
-            menuText.append(menu2);
+            menuText.append("2. "+menu2);
             menuText.append("\n");
         }
-        if(menu3 != null){menuText.append(menu3);
+        if(menu3 != null){menuText.append("3. "+menu3);
             menuText.append("\n");}
-        if(menu4 != null){ menuText.append(menu4);
+        if(menu4 != null){ menuText.append("4. "+menu4);
             menuText.append("\n");}
         if(menu5 != null){menuText.append(menu5);
             menuText.append("\n");}

@@ -13,11 +13,29 @@ public class TogetherListModel implements Serializable {
     String place;
     String finishTime;
     String curPeople;
+    String limitMoney;
+    String price;
 
 
     private TogetherListModel() {}
 
-    private TogetherListModel(String storeName, String storeId, String orderId, String peopleNum, String curStatus, String ranNum, String place, String finishTime, String curPeople) {
+    public String getLimitMoney() {
+        return limitMoney;
+    }
+
+    public void setLimitMoney(String limitMoney) {
+        this.limitMoney = limitMoney;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    private TogetherListModel(String storeName, String storeId, String orderId, String peopleNum, String curStatus, String ranNum, String place, String finishTime, String curPeople, String limitMoney, String price) {
         this.storeName = storeName;
         this.storeId = storeId;
         this.orderId = orderId;
@@ -27,7 +45,8 @@ public class TogetherListModel implements Serializable {
         this.place = place;
         this.finishTime = finishTime;
         this.curPeople = curPeople;
-
+        this.limitMoney =limitMoney;
+        this.price = price;
     }
 
     public String getStoreName() {

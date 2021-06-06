@@ -17,13 +17,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.internal.InternalTokenProvider;
 
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "Hello";
-    Button togetherBtn, aloneBtn, paymentBtn;
+    Button togetherBtn, aloneBtn, paymentBtn, locationBtn;
     String userId, menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9, menu10, price, storeId, ranNum;
     FirebaseFirestore db;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         aloneBtn = findViewById(R.id.aloneBtn);
         paymentBtn=findViewById(R.id.paymentBtn);
         paymentBtn.setVisibility(View.GONE);
+        locationBtn = findViewById(R.id.locationBtn);
 
         Intent MainIntent = getIntent();
         userId = MainIntent.getStringExtra("id");
@@ -63,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent aloneIntent = new Intent(MainActivity.this, AloneActivity.class);
                 aloneIntent.putExtra("id",userId);
                 startActivity(aloneIntent);
+            }
+        });
+
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LocationActivity.class);
+                intent.putExtra("id",userId);
+                startActivity(intent);
             }
         });
 

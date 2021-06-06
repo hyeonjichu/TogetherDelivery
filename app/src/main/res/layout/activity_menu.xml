@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/bbbbakey" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/limitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="장바구니에 담을 메뉴를 체크해 주시고 아래 버튼 클릭"

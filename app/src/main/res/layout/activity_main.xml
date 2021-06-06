@@ -24,7 +24,7 @@
             android:id="@+id/aloneBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:text="혼자 배달" />
     </LinearLayout>
 
@@ -44,12 +44,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="같이 배달"
-            tools:layout_marginTop="20dp" />
+            tools:layout_marginTop="30dp" />
+
     </LinearLayout>
 
     <Button
+        android:id="@+id/locationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="위치 검색" />
+
+    <Button
         android:id="@+id/paymentBtn"
-        android:layout_width="206dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="결제하기" />
 
